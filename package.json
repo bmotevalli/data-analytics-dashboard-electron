@@ -1,10 +1,14 @@
 {
   "name": "data-analytics-dashboard-electron",
+  "productName": "Data Analytics App",
   "version": "1.0.0",
   "description": "This is a sample application for a typical data-analytics purpose.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/vehicle.png --prune=true --out=release-builds",
+    "package-win": "electron-packager . data-analytics-dashboard-electron --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/vehicle.png --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Data Analytics App\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/vehicle.png --prune=true --out=release-builds"
   },
   "repository": {
     "type": "git",
@@ -17,6 +21,11 @@
   },
   "homepage": "https://github.com/bmotevalli/data-analytics-dashboard-electron#readme",
   "dependencies": {
-    "electron": "^8.2.5"
+    "array-unique": "^0.3.2",
+    "electron": "^8.1.1"
+  },
+  "devDependencies": {
+    "electron-packager": "^14.2.1",
+    "electron": "^8.1.1"
   }
 }
