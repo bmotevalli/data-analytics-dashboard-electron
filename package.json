@@ -1,0 +1,22 @@
+{
+  "name": "data-analytics-dashboard-electron",
+  "version": "1.0.0",
+  "description": "This is a sample application for a typical data-analytics purpose.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmotevalli/data-analytics-dashboard-electron.git"
+  },
+  "author": "Benyamin Motevalli, Neda Taherifar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bmotevalli/data-analytics-dashboard-electron/issues"
+  },
+  "homepage": "https://github.com/bmotevalli/data-analytics-dashboard-electron#readme",
+  "dependencies": {
+    "electron": "^8.2.5"
+  }
+}
