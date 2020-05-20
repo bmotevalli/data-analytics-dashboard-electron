@@ -19,7 +19,7 @@ app.on('ready', function() {
 
     // Load html into window: the line below basically passes: file://__dirname/mainWindow.html
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'mainWindow.html'),
+        pathname: path.join(__dirname, 'views', 'mainWindow.html'),
         protocol: 'file:',
         slashes: true
     }));

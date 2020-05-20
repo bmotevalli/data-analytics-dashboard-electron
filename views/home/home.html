@@ -1,0 +1,50 @@
+<script src="../views/home/home.js"></script>
+<link rel="stylesheet" href="home/home.css" >
+<div id="home" class="home">
+    
+    <!-- DATA HOLDER -->
+    <div id="data-holder" style="display:none;"></div>
+
+    <!-- LOAD DATA SECTION -->
+    <div>
+        <h3 style="margin-bottom: 20px;">Load Data</h3>
+        <form id="upload" action="upload.php" method="POST" enctype="multipart/form-data">
+
+        <fieldset>
+        
+        <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" class="input"/>
+        <div class="row" style="vertical-align: middle; padding: 20px;">
+            <div class="col-md-auto">
+                <label class="p-3 mb-2 bg-primary text-white" style="cursor: pointer; border-radius: 10px; height: 45px; vertical-align: middle; margin-right: 10px;">
+                    <input type="file" id="fileselect" style="display: none;"/>
+                    <p>Upload</p>
+                </label>
+            </div>
+            <div class="col-9">
+              <div id="filedrag">or drop files here</div>
+            </div>
+          </div>
+        
+        <div id="submitbutton">
+            <button type="submit">Upload Files</button>
+        </div>
+        
+        </fieldset>
+        
+        </form>
+        
+        <div id="messages">
+        <p>Status Messages</p>
+        </div>
+    </div>
+    
+    <!-- DATA TABLE VIEW -->
+    <div style="margin-top: 50px;">
+        <h3 style="margin-bottom:25px;">Data View</h3>
+        <div class="pane">
+            <table id="data-load-view" class="table"></table>
+        </div>        
+    </div>       
+
+</div>
+

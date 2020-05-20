@@ -73,6 +73,19 @@ To build MSI installer we use electron-packager. First, we need to install WiXTo
 
 
 
-**COMMANDS**: 
+# COMMANDS:
+
+### Node.js
 
     npm config edit: Opens the config file for npm.
+
+### Git
+
+Git commands with SSL_Certificate:
+     
+     env GIT_SSL_NO_VERIFY=true git <command>
+
+Git commands to pull latest commit:
+
+    1. env GIT_SSL_NO_VERIFY=true git fetch --all
+    2. git reset --hard origin/<branch>
