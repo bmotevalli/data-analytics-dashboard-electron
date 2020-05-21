@@ -24,14 +24,14 @@ function csvJSON(csv){
   
         for(var j=0;j<headers.length;j++){
             obj[headers[j]] = currentline[j];
-        }
-  
-        result.push(obj);
-  
+        }  
+        result.push(obj);  
     }
+
+    console.log(result)
   
     //return result; //JavaScript object
-    return JSON.stringify(result); //JSON
+    return result // JSON.stringify(result); //JSON
 }
 
 // getElementById
@@ -102,27 +102,34 @@ function FileSelectHandler(e) {
 function ParseFile(file) {
 
 	Output(
-		"<p>File information: <strong>" + file.name +
-		"</strong> type: <strong>" + file.type +
+		"<p><strong>" + file.name +
+		"</strong> (type: <strong>" + file.type +
 		"</strong> size: <strong>" + (parseFloat(file.size) / 1000).toString() +
-		"</strong> kb</p>"
+		"</strong> kb)</p>"
 	);
 	
 }
 
 function ReadFile(file) {
-    var dataHolder = $id("data-holder")
+    var dataHolder = $id("data-holder");
+    var fileMeta = "<p>File information: <strong>" + file.name +
+    "</strong> type: <strong>" + file.type +
+    "</strong> size: <strong>" + (parseFloat(file.size) / 1000).toString() +
+    "</strong> kb</p>";
     const reader = new FileReader();
     reader.addEventListener('load', (event) => {
-        dataHolder.append(csvJSON(event.target.result));
+        dataHolder.innerText = JSON.stringify({
+            "content": csvJSON(event.target.result),
+            "meta": fileMeta
+        });
       });
-    reader.readAsText(file)
+    reader.readAsText(file);
 }
 
-function DataLoadHandler(e) {
-    // console.log(e.target.innerText)
-    var data = JSON.parse(e.target.innerText);
-    var cols = Object.keys(data[0]);
+function createDataLoadView() {
+    var json_cont = JSON.parse(dataHolder.innerText)
+    var data      = json_cont["content"];
+    var cols      = Object.keys(data[0]);
 
     var tblContent = `<thead class="thead-dark">`
     tblContent += "<thead>"
@@ -141,40 +148,12 @@ function DataLoadHandler(e) {
     }
     tblContent += "</tbody>"
     $('#data-load-view').html(tblContent); 
+}
 
-    // var r = new Array(); var k = 0;
-    // r[k++] = "<thead>"
-    // for (var j=0; j < cols.length; j++){ 
-    //     r[k++] = `<th scope="col">${[cols[j]]}</th>`;
-    // }
-    // r[k++] = "</thead>"
-    
-    // r[k++] = "<tbody>"
-    // for (var i=0, size=data.length; i<size; i++){
-    //     r[k++] ='<tr>';
-    //     for (var j=0; j < cols.length; j++){ 
-    //         r[k++] = `<td>${data[i][cols[j]]}</td>`;
-    //     }
-    //     r[k++] = '</tr>'
-    // }
-    // r[k++] = "</tbody>"
-    // $('#data-load-view').html(r.join('')); 
-
-
-    // var cols = Object.keys(data[0]);
-    // var headerTr$ = $('<tr/>');
-
-    // for (var i = 0; i < cols.length; i++){
-    //     console.log(cols[i])
-    //     headerTr$.append($('<th/>').html(cols[i]));
-    // }
-    
-    // dataLoadView.append(headerTr$)
-    // console.log(headerTr$)
-
-    // for (var i = 0; i < data.length; i++) {
-        
-    // }
+function DataLoadHandler(e) {
+    // console.log(e.target.innerText)
+    // var data = JSON.parse(e.target.innerText);
+    createDataLoadView();    
 }
 
 
